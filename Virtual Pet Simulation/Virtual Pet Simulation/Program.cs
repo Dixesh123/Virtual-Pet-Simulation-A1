@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 
 class Pet
 {
@@ -22,5 +23,24 @@ class Pet
         Hunger = Math.Max(1, Hunger - 2); // Decreases hunger
         Health = Math.Min(10, Health + 1); // Increases health
         Console.WriteLine($"{Name}has been fed, reducing hunger and slightly improving health.");
+    }
+
+    public void Playwithanimal()
+    {
+        if (Hunger >= 7)
+        {
+            Console.WriteLine($"{Name} Is too full to play.");
+            return;
+        }
+        Happiness = Math.Min(10, Happiness + 2); // Increases happiness
+        Hunger = Math.Min(10, Hunger + 1); // Increases hunger
+        Console.WriteLine($"{Name}played with joy, raising happiness yet a little bit increasing hunger.");
+    }
+
+    public void animalinrest()
+    {
+        Health = Math.Min(10, Health + 2); // Increases health
+        Happiness = Math.Max(1, Happiness - 1); // Decreases happiness
+        Console.WriteLine($"{Name} is sleeping. Happiness slightly declined as health increased.");
     }
 }
