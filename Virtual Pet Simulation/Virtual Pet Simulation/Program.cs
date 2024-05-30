@@ -43,4 +43,30 @@ class Pet
         Happiness = Math.Max(1, Happiness - 1); // Decreases happiness
         Console.WriteLine($"{Name} is sleeping. Happiness slightly declined as health increased.");
     }
+    public void ShowStatus()
+    {
+        Console.WriteLine($"\n{Name}'s Status:");
+        Console.WriteLine($"Hunger: {Hunger}/10");
+        Console.WriteLine($"Happiness: {Happiness}/10");
+        Console.WriteLine($"Health: {Health}/10");
+
+        if (Hunger >= 8)
+            Console.WriteLine("Alert: There is extreme hunger.!");
+        if (Happiness <= 2)
+            Console.WriteLine("Alert: There is very little happiness.!");
+        if (Health <= 2)
+            Console.WriteLine("Alert: Health is very low!");
+    }
+    public void TimePasses()
+    {
+        Hunger = Math.Min(10, Hunger + 1); // Hunger increases over time
+        Happiness = Math.Max(1, Happiness - 1); // Happiness decreases over time
+
+        if (Hunger >= 8 || Happiness <= 2)
+        {
+            Health = Math.Max(1, Health - 1); // Health deteriorates if hunger or happiness is critical
+        }
+    }
 }
+
+
