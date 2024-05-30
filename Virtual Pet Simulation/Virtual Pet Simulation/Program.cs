@@ -69,4 +69,58 @@ class Pet
     }
 }
 
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Welcome to the Virtual Pet Simulator!");
+
+        Console.Write("Choose a pet type (e.g., tiger, lion, goat): ");
+        string animalType = Console.ReadLine();
+
+        Console.Write("Give your pet a name: ");
+        string animalName = Console.ReadLine();
+
+        Pet animal = new Pet(animalName, animalType);
+
+        Console.WriteLine($"\nCongratulations! You've adopted a {animal.Type} named {animal.Name}.");
+
+        bool running = true;
+        while (running)
+        {
+            animal.ShowStatus();
+
+            Console.WriteLine("\nWhat would you like to do?");
+            Console.WriteLine("1. Feed");
+            Console.WriteLine("2. Play");
+            Console.WriteLine("3. Rest");
+            Console.WriteLine("4. Exit");
+
+            Console.Write("Enter your choice (1-4): ");
+            string choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    animal.Feedinganimal();
+                    break;
+                case "2":
+                    animal.Playwithanimal();
+                    break;
+                case "3":
+                    animal.animalinrest();
+                    break;
+                case "4":
+                    running = false;
+                    Console.WriteLine("Goodbye! Thanks for playing.");
+                    continue;
+                default:
+                    Console.WriteLine("Invalid choice. Please enter a number between 1 and 4.");
+                    continue;
+            }
+
+            animal.TimePasses(); // Simulate time passing
+        }
+    }
+}
 
